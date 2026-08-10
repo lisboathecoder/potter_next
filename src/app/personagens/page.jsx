@@ -1,49 +1,80 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import Toast from "react-hot-toast";
+import Image from "next/image";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Personagens() {
-  const [personagem, setPersonagem] = useState("");
   const [resultado, setResultado] = useState(null);
-  const [erro, setErro] = useState(" ");
+  const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const buscarPersonagem = async () => {
+  const buscarPersonagens = async () => {
     setLoading(true);
     setErro("");
 
     try {
       const { data } = await axios.get(
-        `https://hp-api.onrender.com/api/characters/?name=${personagem}`,
+        `https://hp-api.onrender.com/api/characters/`,
       );
-      setResultado(data.characters[0]);
+      setResultado(data);
     } catch {
-      setErro("Personagem não encontrado.");
+      toast.error("Personagens não encontrados.");
+      setErro("Personagens não encontrados.");
     } finally {
       setLoading(false);
     }
-    console.error("Erro ao buscar personagem:", erro);
 
-    
+    const showSuccess = () => toast.success("Sucesso!");
+
+    const showError = () => toast.error("Erro!");
+
+    const showPromise = () => {
+        const promise = new Promise((resolve, reject) =>
+            setTimeout(() => (Math.random() > 0.5 ? resolve() : reject()), 2000)
+        );
+
+        toast.promise(promise, {
+            loading: "Carregando...",
+            success: "Concluído!",
+            error: "Falhou!",
+        });
+    };
   };
+
   
   return (
     <div>
-      <input
-        value={personagem}
-        onChange={(e) => setPersonagem(e.target.value)}
-        placeholder="Digite um personagem"
-      />
-      <button onClick={buscarPersonagem}>
+      <button onClick={buscarPersonagens}>
         {loading ? "Buscando..." : "Buscar"}
-      </button> 
-
-      {resultado && <p>{resultado.name}</p>}
+      </button>
+      <Toaster />
+      {resultado && (
+        <ul>
+          {resultado.map((personagem, index) => (
+            <li key={`${personagem.name}-${index}`}>
+              <h3>{personagem.name}</h3>
+              <p>Casa: {personagem.house}</p>
+              <p>Espécie: {personagem.species}</p>
+              <p>Gênero: {personagem.gender}</p>
+              <p>Data de Nascimento: {personagem.dateOfBirth}</p>
+              <p>Patrono: {personagem.patronus}</p>
+              <p>Ator: {personagem.actor}</p>
+              {personagem.image && (
+                <Image
+                  src={personagem.image}
+                  alt={personagem.name}
+                  width={240}
+                  height={320}
+                  sizes="240px"
+                />
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
       {erro && <p>{erro}</p>}
       
     </div>
-    
   );
-  
 }
