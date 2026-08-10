@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: 760px;
+  max-width: 960px;
   margin: 2rem auto;
   padding: 0 1rem 2rem;
   display: grid;
@@ -40,4 +40,33 @@
 .list li:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+.integrantes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.integrante {
+  text-align: center;
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 220px;
+}
+
+.foto {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.integrante p {
+  margin: 0;
+  font-weight: 600;
+  color: #374151;
 }
