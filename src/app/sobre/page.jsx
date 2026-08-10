@@ -16,7 +16,6 @@ const integrantes = [
 export default function Sobre() {
   return (
     <div className={styles.page}>
-      <Header title="Sobre o projeto" subtitle="Informações do grupo e do curso" />
 
       <main className={styles.container}>
         <section className={styles.card}>
