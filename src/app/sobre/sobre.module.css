@@ -6,7 +6,7 @@
 .container {
   max-width: 960px;
   margin: 2rem auto;
-  padding: 0 1rem 2rem;
+  padding: 0 3rem 3rem;
   display: grid;
   gap: 1rem;
 }
@@ -14,8 +14,8 @@
 .card {
   background: #ffffff;
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {
