@@ -1,0 +1,60 @@
+.card {
+	list-style: none;
+}
+
+.imageButton,
+.archiveButton {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: 100%;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+}
+
+.image {
+	border-radius: 18px;
+	object-fit: cover;
+	box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+	transition: transform 0.2s ease;
+}
+
+.imageButton:hover .image {
+	transform: scale(1.02);
+}
+
+.name {
+	margin: 0;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.archiveButton {
+	padding: 16px;
+	border-radius: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.06);
+	text-align: left;
+	align-items: flex-start;
+	transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.archiveButton:hover {
+	transform: translateY(-1px);
+	border-color: rgba(216, 177, 95, 0.5);
+	background: rgba(255, 255, 255, 0.09);
+}
+
+.archiveName {
+	font-size: 1rem;
+	color: #f4ead2;
+}
+
+.archiveLabel {
+	color: rgba(244, 234, 210, 0.75);
+}
