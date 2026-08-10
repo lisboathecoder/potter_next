@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  background: #020202;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  color: white;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: #adadad;
+}
+
+.badge {
+  font-weight: 700;
+}
