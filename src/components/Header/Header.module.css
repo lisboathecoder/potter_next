@@ -15,18 +15,14 @@
 .brand {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	justify-content: flex-start;
+	gap: 10px;
 	min-width: 0;
 }
 
-.logo {
-	width: 10rem;
-	height: 5rem;
-	object-fit: contain;
-}
 
 .brandText {
-	font-size: 1rem;
+	font-size: 1.5rem;
 	font-weight: 700;
 	letter-spacing: 0.04em;
 	color: #f4ead2;

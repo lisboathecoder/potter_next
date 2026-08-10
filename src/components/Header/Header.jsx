@@ -10,8 +10,8 @@ export default function Header() {
           className={styles.logo}
           src="/images/logo-potter-next.svg"
           alt="PotterNext"
-          width={100}
-          height={100}
+          width={120}
+          height={120}
           priority
           quality={100}
         />
