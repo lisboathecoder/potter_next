@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import Image from "next/image";
 import toast from "react-hot-toast";
 import styles from "./personagens.module.css";
+import CharacterCard from "../../components/CharacterCard/CharacterCard";
+import CharacterModal from "../../components/CharacterModal/CharacterModal";
 
 export default function Personagens() {
   const [resultado, setResultado] = useState(null);
@@ -57,24 +58,11 @@ export default function Personagens() {
             <h2 className={styles.tituloSecao}>Personagens com imagem</h2>
             <ul className={styles.grid}>
               {personagensComImagem.map((personagem, index) => (
-                <li className={styles.card} key={`${personagem.name}-${index}`}>
-                  <button
-                    type="button"
-                    className={styles.imagemBotao}
-                    onClick={() => setPersonagemSelecionado(personagem)}
-                    aria-label={`Ver detalhes de ${personagem.name}`}
-                  >
-                    <Image
-                      src={personagem.image}
-                      alt={personagem.name}
-                      width={240}
-                      height={320}
-                      sizes="(max-width: 768px) 45vw, 240px"
-                      className={styles.imagem}
-                    />
-                  </button>
-                  <h3 className={styles.nome}>{personagem.name}</h3>
-                </li>
+                <CharacterCard
+                  key={`${personagem.name}-${index}`}
+                  personagem={personagem}
+                  onClick={setPersonagemSelecionado}
+                />
               ))}
             </ul>
           </section>
@@ -85,72 +73,21 @@ export default function Personagens() {
           <h2 className={styles.tituloSecao}>Personagens arquivados</h2>
           <ul className={styles.listaArquivados}>
             {personagensArquivados.map((personagem, index) => (
-              <li key={`${personagem.name}-${index}`}>
-                <button
-                  type="button"
-                  className={styles.arquivadoBotao}
-                  onClick={() => setPersonagemSelecionado(personagem)}
-                  aria-label={`Ver detalhes de ${personagem.name}`}
-                >
-                  <strong>{personagem.name}</strong>
-                  <span>Sem imagem disponível</span>
-                </button>
-              </li>
+              <CharacterCard
+                key={`${personagem.name}-${index}`}
+                personagem={personagem}
+                onClick={setPersonagemSelecionado}
+              />
             ))}
           </ul>
         </section>
       )}
 
       {personagemSelecionado && (
-        <div
-          className={styles.modalOverlay}
-          role="presentation"
-          onClick={() => setPersonagemSelecionado(null)}
-        >
-          <div
-            className={styles.modal}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="detalhes-personagem"
-            onClick={(event) => event.stopPropagation()}
-
-          >
-            <button
-              type="button"
-              className={styles.fechar}
-              onClick={() => setPersonagemSelecionado(null)}
-              aria-label="Fechar modal"
-            >
-              &times;
-            </button>
-            <h2 id="detalhes-personagem" className={styles.modalTitulo}>
-              {personagemSelecionado.name}
-            </h2>
-            <div className={styles.modalConteudo}>
-              {personagemSelecionado.image && (
-                <Image
-                  src={personagemSelecionado.image}
-                  alt={personagemSelecionado.name}
-                  width={240}
-                  height={320}
-                  sizes="240px"
-                  className={styles.modalImagem}
-                  quality={100}
-                />
-              )}
-              <div className={styles.modalDetalhes}>
-                <p>Casa: {valorOuNaoInformado(personagemSelecionado.house)}</p>
-                <p>Espécie: {valorOuNaoInformado(personagemSelecionado.species)}</p>
-                <p>Gênero: {valorOuNaoInformado(personagemSelecionado.gender)}</p>
-                <p>
-                  Data de Nascimento: {valorOuNaoInformado(personagemSelecionado.dateOfBirth)}
-                </p>
-                <p>Patrono: {valorOuNaoInformado(personagemSelecionado.patronus)}</p>
-                <p>Ator: {valorOuNaoInformado(personagemSelecionado.actor)}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CharacterModal
+          personagem={personagemSelecionado}
+          onClose={() => setPersonagemSelecionado(null)}
+        />
       )}
     </div>
   );
