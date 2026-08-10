@@ -6,6 +6,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
+        <Link href="/">
         <Image
           className={styles.logo}
           src="/images/logo-potter-next.svg"
@@ -15,7 +16,9 @@ export default function Header() {
           priority
           quality={100}
         />
+        </Link>
         <span className={styles.brandText}>PotterNext</span>
+
       </div>
 
       <nav className={styles.nav} aria-label="Navegação principal">
