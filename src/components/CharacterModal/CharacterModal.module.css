@@ -1,0 +1,75 @@
+.overlay {
+	position: fixed;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	padding: 20px;
+	background: rgba(7, 6, 12, 0.78);
+	z-index: 50;
+}
+
+.modal {
+	position: relative;
+	width: min(900px, 100%);
+	max-height: calc(100vh - 40px);
+	overflow: auto;
+	padding: 24px;
+	border-radius: 28px;
+	background: linear-gradient(180deg, #1d1730 0%, #120f1d 100%);
+	border: 1px solid rgba(216, 177, 95, 0.25);
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.close {
+	position: absolute;
+	top: 14px;
+	right: 16px;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	color: #f4ead2;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+.title {
+	margin: 0 44px 20px 0;
+	font-size: 1.8rem;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: minmax(220px, 280px) 1fr;
+	gap: 24px;
+	align-items: start;
+}
+
+.image {
+	width: 100%;
+	height: auto;
+	border-radius: 22px;
+	object-fit: cover;
+}
+
+.details {
+	display: grid;
+	gap: 10px;
+	color: #f8f1dc;
+}
+
+.details p {
+	margin: 0;
+	line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+	.content {
+		grid-template-columns: 1fr;
+	}
+
+	.title {
+		font-size: 1.5rem;
+	}
+}
