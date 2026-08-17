@@ -1,12 +1,14 @@
 .page {
   min-height: 100vh;
-  background: #f7f7f7;
+  background:
+		radial-gradient(circle at top, rgba(255, 214, 122, 0.16), transparent 35%),
+		linear-gradient(180deg, #0e0b18 0%, #181225 100%);
 }
 
 .container {
   max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 3rem 3rem;
+  margin: 0 auto;
+  padding: 5rem 1rem 2rem;
   display: grid;
   gap: 1rem;
 }
@@ -34,7 +36,7 @@
 
 .list li {
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #d9dbdf;
 }
 
 .list li:last-child {
@@ -51,7 +53,7 @@
 
 .integrante {
   text-align: center;
-  background: #fafafa;
+  background: #d4d3d3;
   border-radius: 12px;
   padding: 1rem;
   width: 220px;
