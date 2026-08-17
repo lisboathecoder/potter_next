@@ -1,21 +1,35 @@
 "use client";
 import { useState } from "react";
+import { Pagination } from "antd";
 import axios from "axios";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import styles from "./personagens.module.css";
 import CharacterCard from "../../components/CharacterCard/CharacterCard";
 import CharacterModal from "../../components/CharacterModal/CharacterModal";
+
+const getPersonagemKey = (personagem) => {
+  const id =
+    personagem?.id ??
+    `${personagem?.name ?? "personagem"}-${personagem?.actor ?? "sem-ator"}`;
+
+  return String(id);
+};
+
+const ITENS_POR_PAGINA = 12;
 
 export default function Personagens() {
   const [resultado, setResultado] = useState(null);
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
   const [personagemSelecionado, setPersonagemSelecionado] = useState(null);
+  const [favoritos, setFavoritos] = useState({});
+  const [paginaAtual, setPaginaAtual] = useState(1);
 
   const buscarPersonagens = async () => {
     setLoading(true);
     setErro("");
     setPersonagemSelecionado(null);
+    setPaginaAtual(1);
 
     try {
       const { data } = await axios.get(
@@ -31,10 +45,35 @@ export default function Personagens() {
     }
   };
 
-  const personagensComImagem = resultado?.filter((personagem) => personagem.image) ?? [];
-  const personagensArquivados = resultado?.filter((personagem) => !personagem.image) ?? [];
+  const alternarFavorito = (personagem) => {
+    const chave = getPersonagemKey(personagem);
 
-  const valorOuNaoInformado = (valor) => valor || "Não informado";
+    setFavoritos((favoritosAtuais) => {
+      const jaFavoritado = Boolean(favoritosAtuais[chave]);
+      const proximoFavoritos = { ...favoritosAtuais };
+
+      if (jaFavoritado) {
+        delete proximoFavoritos[chave];
+        toast.info(`${personagem.name} removido dos favoritos.`);
+      } else {
+        proximoFavoritos[chave] = personagem;
+        toast.success(`${personagem.name} adicionado aos favoritos.`);
+      }
+
+      return proximoFavoritos;
+    });
+  };
+
+  const personagensComImagem =
+    resultado?.filter((personagem) => personagem.image) ?? [];
+  const personagensArquivados =
+    resultado?.filter((personagem) => !personagem.image) ?? [];
+
+  const indiceInicial = (paginaAtual - 1) * ITENS_POR_PAGINA;
+  const personagensPaginaAtual = personagensComImagem.slice(
+    indiceInicial,
+    indiceInicial + ITENS_POR_PAGINA,
+  );
 
   return (
     <div className={styles.page}>
@@ -57,14 +96,29 @@ export default function Personagens() {
           <section className={styles.section}>
             <h2 className={styles.tituloSecao}>Personagens com imagem</h2>
             <ul className={styles.grid}>
-              {personagensComImagem.map((personagem, index) => (
+              {personagensPaginaAtual.map((personagem, index) => (
                 <CharacterCard
-                  key={`${personagem.name}-${index}`}
+                  key={`${getPersonagemKey(personagem)}-${index}`}
                   personagem={personagem}
                   onClick={setPersonagemSelecionado}
+                  onToggleFavorito={alternarFavorito}
+                  isFavorito={Boolean(favoritos[getPersonagemKey(personagem)])}
                 />
               ))}
             </ul>
+            {personagensComImagem.length > ITENS_POR_PAGINA && (
+              <div className={styles.paginationWrapper}>
+                <Pagination
+                  current={paginaAtual}
+                  pageSize={ITENS_POR_PAGINA}
+                  total={personagensComImagem.length}
+                  onChange={setPaginaAtual}
+                  showSizeChanger={false}
+                  showQuickJumper={false}
+                  size="default"
+                />
+              </div>
+            )}
           </section>
         </>
       )}
@@ -74,9 +128,11 @@ export default function Personagens() {
           <ul className={styles.listaArquivados}>
             {personagensArquivados.map((personagem, index) => (
               <CharacterCard
-                key={`${personagem.name}-${index}`}
+                key={`${getPersonagemKey(personagem)}-${index}`}
                 personagem={personagem}
                 onClick={setPersonagemSelecionado}
+                onToggleFavorito={alternarFavorito}
+                isFavorito={Boolean(favoritos[getPersonagemKey(personagem)])}
               />
             ))}
           </ul>
