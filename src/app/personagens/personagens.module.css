@@ -74,6 +74,12 @@
 	list-style: none;
 }
 
+.paginationWrapper {
+	display: flex;
+	justify-content: center;
+	margin-top: 24px;
+}
+
 .vazio {
 	margin: 0;
 	color: rgba(244, 234, 210, 0.75);

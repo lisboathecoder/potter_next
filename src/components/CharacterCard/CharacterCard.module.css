@@ -2,6 +2,10 @@
 	list-style: none;
 }
 
+.cardHeader {
+	position: relative;
+}
+
 .imageButton,
 .archiveButton {
 	display: flex;
@@ -57,4 +61,36 @@
 
 .archiveLabel {
 	color: rgba(244, 234, 210, 0.75);
+}
+
+.favoriteButton {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid rgba(255, 255, 255, 0.24);
+	border-radius: 50%;
+	background: rgba(12, 9, 18, 0.56);
+	color: #f4ead2;
+	cursor: pointer;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.favoriteButton:hover {
+	transform: scale(1.05);
+}
+
+.favoriteButtonActive {
+	background: rgba(216, 177, 95, 0.18);
+	border-color: rgba(216, 177, 95, 0.84);
+	color: #f6d27a;
+}
+
+.favoriteIcon {
+	font-size: 1.4rem;
+	line-height: 1;
 }
