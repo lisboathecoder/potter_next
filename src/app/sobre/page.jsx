@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Header from "../../components/Header/Header";
 import styles from "./sobre.module.css";
 
 const integrantes = [
@@ -16,7 +15,6 @@ const integrantes = [
 export default function Sobre() {
   return (
     <div className={styles.page}>
-
       <main className={styles.container}>
         <section className={styles.card}>
           <h2>Informações gerais</h2>

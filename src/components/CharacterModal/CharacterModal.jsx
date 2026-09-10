@@ -5,13 +5,20 @@ export default function CharacterModal({ personagem, onClose }) {
   const valorOuNaoInformado = (valor) => valor || "Não informado";
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div
-        className={styles.modal}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="detalhes-personagem"
-      >
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="detalhes-personagem"
+      tabIndex={-1}
+      onClick={onClose}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          onClose();
+        }
+      }}
+    >
+      <div className={styles.modal}>
         <button
           type="button"
           className={styles.close}
@@ -46,9 +53,8 @@ export default function CharacterModal({ personagem, onClose }) {
             <p>Ator: {valorOuNaoInformado(personagem.actor)}</p>
             <p>Vivo: {personagem.alive ? "Sim" : "Não"}</p>
             <p>Cor dos olhos: {valorOuNaoInformado(personagem.eyeColour)}</p>
-			<p>Cor do cabelo: {valorOuNaoInformado(personagem.hairColour)}</p>
+            <p>Cor do cabelo: {valorOuNaoInformado(personagem.hairColour)}</p>
           </div>
-		  
         </div>
       </div>
     </div>
