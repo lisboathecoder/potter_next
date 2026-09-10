@@ -1,4 +1,5 @@
 "use client";
+<<<<<<< HEAD
 import { Pagination } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -6,6 +7,15 @@ import { toast } from "react-toastify";
 import CharacterCard from "../../components/CharacterCard/CharacterCard";
 import CharacterModal from "../../components/CharacterModal/CharacterModal";
 import styles from "./personagens.module.css";
+=======
+import { useState } from "react";
+import { Pagination } from "antd";
+import axios from "axios";
+import { toast } from "react-toastify";
+import styles from "./personagens.module.css";
+import CharacterCard from "../../components/CharacterCard/CharacterCard";
+import CharacterModal from "../../components/CharacterModal/CharacterModal";
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
 
 const getPersonagemKey = (personagem) => {
   const id =
@@ -16,6 +26,7 @@ const getPersonagemKey = (personagem) => {
 };
 
 const ITENS_POR_PAGINA = 12;
+<<<<<<< HEAD
 const FAVORITOS_KEY = "favoritos";
 
 const lerStorage = (storage, chave, fallback) => {
@@ -62,6 +73,8 @@ const getFavoritosSalvos = () => {
     chaves.has(getPersonagemKey(personagem)),
   );
 };
+=======
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
 
 export default function Personagens() {
   const [resultado, setResultado] = useState(null);
@@ -70,6 +83,7 @@ export default function Personagens() {
   const [personagemSelecionado, setPersonagemSelecionado] = useState(null);
   const [favoritos, setFavoritos] = useState({});
   const [paginaAtual, setPaginaAtual] = useState(1);
+<<<<<<< HEAD
 
   useEffect(() => {
     const personagensFavoritos = getFavoritosSalvos();
@@ -83,6 +97,8 @@ export default function Personagens() {
       ),
     );
   }, []);
+=======
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
 
   const buscarPersonagens = async () => {
     setLoading(true);
@@ -122,6 +138,7 @@ export default function Personagens() {
 
       if (jaFavoritado) {
         delete proximoFavoritos[chave];
+<<<<<<< HEAD
         const favoritosRestantes = Object.values(proximoFavoritos);
         window.localStorage.setItem(
           FAVORITOS_KEY,
@@ -144,6 +161,11 @@ export default function Personagens() {
           FAVORITOS_KEY,
           JSON.stringify(Object.keys(proximoFavoritos)),
         );
+=======
+        toast.info(`${personagem.name} removido dos favoritos.`);
+      } else {
+        proximoFavoritos[chave] = personagem;
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
         toast.success(`${personagem.name} adicionado aos favoritos.`);
       }
 
@@ -168,11 +190,15 @@ export default function Personagens() {
       <p className={styles.descricao}>
         Aqui você pode encontrar todos os personagens da série Harry Potter.
       </p>
+<<<<<<< HEAD
       <button
         type="button"
         className={styles.botaoBuscar}
         onClick={buscarPersonagens}
       >
+=======
+      <button className={styles.botaoBuscar} onClick={buscarPersonagens}>
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
         {loading ? "Buscando..." : "Buscar"}
       </button>
       {loading && (
@@ -182,6 +208,7 @@ export default function Personagens() {
       )}
       {erro && <p className={styles.erro}>{erro}</p>}
 
+<<<<<<< HEAD
       {resultado && resultado.length === 0 && (
         <p className={styles.vazio}>Nenhum personagem foi favoritado.</p>
       )}
@@ -214,14 +241,52 @@ export default function Personagens() {
             </div>
           )}
         </section>
+=======
+      {resultado && (
+        <>
+          <section className={styles.section}>
+            <h2 className={styles.tituloSecao}>Personagens com imagem</h2>
+            <ul className={styles.grid}>
+              {personagensPaginaAtual.map((personagem, index) => (
+                <CharacterCard
+                  key={`${getPersonagemKey(personagem)}-${index}`}
+                  personagem={personagem}
+                  onClick={setPersonagemSelecionado}
+                  onToggleFavorito={alternarFavorito}
+                  isFavorito={Boolean(favoritos[getPersonagemKey(personagem)])}
+                />
+              ))}
+            </ul>
+            {personagensComImagem.length > ITENS_POR_PAGINA && (
+              <div className={styles.paginationWrapper}>
+                <Pagination
+                  current={paginaAtual}
+                  pageSize={ITENS_POR_PAGINA}
+                  total={personagensComImagem.length}
+                  onChange={setPaginaAtual}
+                  showSizeChanger={false}
+                  showQuickJumper={false}
+                  size="default"
+                />
+              </div>
+            )}
+          </section>
+        </>
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
       )}
       {resultado && personagensArquivados.length > 0 && (
         <section className={styles.section}>
           <h2 className={styles.tituloSecao}>Personagens arquivados</h2>
           <ul className={styles.listaArquivados}>
+<<<<<<< HEAD
             {personagensArquivados.map((personagem) => (
               <CharacterCard
                 key={getPersonagemKey(personagem)}
+=======
+            {personagensArquivados.map((personagem, index) => (
+              <CharacterCard
+                key={`${getPersonagemKey(personagem)}-${index}`}
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
                 personagem={personagem}
                 onClick={setPersonagemSelecionado}
                 onToggleFavorito={alternarFavorito}

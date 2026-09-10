@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import Image from "next/image";
@@ -20,10 +21,18 @@ export default function Header() {
     setTema(novoTema);
   };
 
+=======
+import Link from "next/link";
+import Image from "next/image";
+import styles from "./Header.module.css";
+
+export default function Header() {
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
         <Link href="/">
+<<<<<<< HEAD
           <Image
             className={styles.logo}
             src="/images/logo-potter-next.svg"
@@ -35,6 +44,20 @@ export default function Header() {
           />
         </Link>
         <span className={styles.brandText}>PotterNext</span>
+=======
+        <Image
+          className={styles.logo}
+          src="/images/logo-potter-next.svg"
+          alt="PotterNext"
+          width={120}
+          height={120}
+          priority
+          quality={100}
+        />
+        </Link>
+        <span className={styles.brandText}>PotterNext</span>
+
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
       </div>
 
       <nav className={styles.nav} aria-label="Navegação principal">
@@ -47,6 +70,7 @@ export default function Header() {
         <Link className={styles.link} href="/sobre">
           Sobre
         </Link>
+<<<<<<< HEAD
         <button
           type="button"
           className={styles.themeButton}
@@ -55,6 +79,8 @@ export default function Header() {
         >
           {tema === "light" ? "🌙 Escuro" : "☀️ Claro"}
         </button>
+=======
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
       </nav>
     </header>
   );

@@ -7,6 +7,10 @@ const tecnologias = ["Next.js", "React", "CSS Modules", "JavaScript"];
 export default function Home() {
   return (
     <div className={styles.page}>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
       <main className={styles.container}>
         <section className={styles.hero}>
           <div className={styles.heroText}>

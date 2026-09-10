@@ -1,6 +1,7 @@
 .page {
   min-height: 100vh;
   background:
+<<<<<<< HEAD
     radial-gradient(circle at top, rgba(255, 214, 122, 0.16), transparent 35%),
     linear-gradient(180deg, #0e0b18 0%, #181225 100%);
 }
@@ -9,6 +10,10 @@
   background:
     radial-gradient(circle at top, rgba(216, 177, 95, 0.2), transparent 35%),
     linear-gradient(180deg, #f4f1ea 0%, #e8e1d4 100%);
+=======
+		radial-gradient(circle at top, rgba(255, 214, 122, 0.16), transparent 35%),
+		linear-gradient(180deg, #0e0b18 0%, #181225 100%);
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
 }
 
 .container {
@@ -24,10 +29,13 @@
   border-radius: 12px;
   padding: 2.5rem;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+<<<<<<< HEAD
 }
 
 :global([data-theme="light"]) .card {
   border: 1px solid #1f2937;
+=======
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
 }
 
 .card h2 {
@@ -46,7 +54,11 @@
 
 .list li {
   padding-bottom: 0.5rem;
+<<<<<<< HEAD
   border-bottom: 1px solid var(--border);
+=======
+  border-bottom: 1px solid #d9dbdf;
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
 }
 
 .list li:last-child {
@@ -63,7 +75,11 @@
 
 .integrante {
   text-align: center;
+<<<<<<< HEAD
   background: var(--surface-muted);
+=======
+  background: #d4d3d3;
+>>>>>>> 7a466193567b072a8f912ec3b44324d5252603c9
   border-radius: 12px;
   padding: 1rem;
   width: 220px;
