@@ -3,12 +3,7 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
       images: {
-        domains: [
-            'images.unsplash.com',
-            'picsum.photos',
-            'via.placeholder.com',
-            'ik.imagekit.io'
-        ],
+        remotePatterns: [{hostname: 'ik.imagekit.io'}],
       },
 };
 

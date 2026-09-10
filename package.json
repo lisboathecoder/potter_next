@@ -3,18 +3,23 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "cls && next dev",
+        "dev": "next dev",
         "build": "next build",
         "start": "next start",
         "lint": "biome check",
         "format": "biome format --write"
     },
     "dependencies": {
+        "@tailwindcss/postcss": "^4.3.3",
+        "antd": "^6.6.1",
         "axios": "^1.19.0",
         "next": "16.2.12",
+        "postcss": "^8.5.26",
         "react": "19.2.8",
         "react-dom": "19.2.8",
-        "react-hot-toast": "^2.6.0"
+        "react-hot-toast": "^2.6.0",
+        "react-toastify": "^11.1.0",
+        "tailwindcss": "^4.3.3"
     },
     "devDependencies": {
         "@biomejs/biome": "2.5.5",

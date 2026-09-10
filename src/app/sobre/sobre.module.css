@@ -1,26 +1,38 @@
 .page {
   min-height: 100vh;
-  background: #f7f7f7;
+  background:
+    radial-gradient(circle at top, rgba(255, 214, 122, 0.16), transparent 35%),
+    linear-gradient(180deg, #0e0b18 0%, #181225 100%);
+}
+
+:global([data-theme="light"]) .page {
+  background:
+    radial-gradient(circle at top, rgba(216, 177, 95, 0.2), transparent 35%),
+    linear-gradient(180deg, #f4f1ea 0%, #e8e1d4 100%);
 }
 
 .container {
   max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 1rem 2rem;
+  margin: 0 auto;
+  padding: 5rem 1rem 2rem;
   display: grid;
   gap: 1rem;
 }
 
 .card {
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .card {
+  border: 1px solid #1f2937;
 }
 
 .card h2 {
   margin-top: 0;
-  color: #1f2937;
+  color: var(--surface-foreground);
 }
 
 .list {
@@ -29,12 +41,12 @@
   margin: 0;
   display: grid;
   gap: 0.75rem;
-  color: #374151;
+  color: var(--surface-secondary-foreground);
 }
 
 .list li {
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
 }
 
 .list li:last-child {
@@ -51,7 +63,7 @@
 
 .integrante {
   text-align: center;
-  background: #fafafa;
+  background: var(--surface-muted);
   border-radius: 12px;
   padding: 1rem;
   width: 220px;
@@ -68,5 +80,5 @@
 .integrante p {
   margin: 0;
   font-weight: 600;
-  color: #374151;
+  color: var(--surface-secondary-foreground);
 }

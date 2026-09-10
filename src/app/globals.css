@@ -1,9 +1,36 @@
+@import "tailwindcss";
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+:root {
+  --background: #0e0b18;
+  --foreground: #f4ead2;
+  --surface: #211a30;
+  --surface-muted: #30263d;
+  --surface-foreground: #f4ead2;
+  --surface-secondary-foreground: rgba(244, 234, 210, 0.78);
+  --border: rgba(216, 177, 95, 0.22);
+  --card-background: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.1);
+}
+
+:root[data-theme="light"] {
+  --background: #f4f1ea;
+  --foreground: #1f2937;
+  --surface: #ffffff;
+  --surface-muted: #f3f0eb;
+  --surface-foreground: #1f2937;
+  --surface-secondary-foreground: #4b5563;
+  --border: #d9dbdf;
+  --card-background: rgba(255, 255, 255, 0.72);
+  --card-border: rgba(31, 41, 55, 0.16);
 }
