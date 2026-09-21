@@ -90,9 +90,7 @@ export default function Personagens() {
     setPaginaAtual(1);
 
     try {
-      const { data } = await axios.get(
-        `https://hp-api.onrender.com/api/characters/`,
-      );
+      const { data } = await axios.get("/api/personagens");
       const personagensFavoritos = getFavoritosSalvos();
       setFavoritos(
         Object.fromEntries(
@@ -131,7 +129,9 @@ export default function Personagens() {
           JSON.stringify(Object.keys(proximoFavoritos)),
         );
         setResultado(favoritosRestantes);
-        toast.info(`${personagem.name} removido dos favoritos.`);
+        toast.info(`${personagem.name} removido dos favoritos.`, {
+          id: "favorito-toast",
+        });
       } else {
         proximoFavoritos[chave] = personagem;
         const favoritosAtualizados = Object.values(proximoFavoritos);
@@ -143,7 +143,9 @@ export default function Personagens() {
           FAVORITOS_KEY,
           JSON.stringify(Object.keys(proximoFavoritos)),
         );
-        toast.success(`${personagem.name} adicionado aos favoritos.`);
+        toast.success(`${personagem.name} adicionado aos favoritos.`, {
+          id: "favorito-toast",
+        });
       }
 
       return proximoFavoritos;
