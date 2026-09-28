@@ -3,7 +3,10 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
       images: {
-        remotePatterns: [{hostname: 'ik.imagekit.io'}],
+        remotePatterns: [
+          {hostname: 'avatars.githubusercontent.com'},
+          {hostname: 'ik.imagekit.io'},
+        ],
       },
 };
 
